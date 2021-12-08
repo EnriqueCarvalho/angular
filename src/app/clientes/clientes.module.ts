@@ -1,17 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MinhasReservasComponent } from './minhas-reservas/minhas-reservas.component';
+import { MinhasReservasComponent } from './reservas/minhas-reservas.component';
 import { ClientesRoutingModule } from './clientes-routing.module';
+import { NovaReservaComponent } from './nova-reserva/nova-reserva.component';
+import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    MinhasReservasComponent
+    MinhasReservasComponent,
+    NovaReservaComponent
   ],
   imports: [
     CommonModule,
-    ClientesRoutingModule
+    ClientesRoutingModule,
+    FormsModule
   ]
 })
 export class ClientesModule { }

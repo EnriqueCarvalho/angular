@@ -1,0 +1,24 @@
+<h1 class="mb-5">Minhas reservas</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Local</th>
+        <th scope="col">Ambiente</th>
+        <th scope="col">Data</th>
+        <th scope="col">Horário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template  ngFor [ngForOf]="reservas" let-reserva let-i="index">
+        <tr>
+          <th scope="row">{{i+1}}</th>
+          <td>{{reserva.local}}</td>
+          <td>{{reserva.ambiente}}</td>
+          <td>{{reserva.data}}</td>
+          <td>{{reserva.horario}}</td>        
+        </tr>
+      </ng-template >
+    </tbody>
+  </table>
+  <button type="button" class="btn btn-success text-right" routerLink="novaReserva">Nova reserva</button>

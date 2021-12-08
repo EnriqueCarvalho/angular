@@ -1,12 +1,17 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
-import { MinhasReservasComponent } from "./minhas-reservas/minhas-reservas.component";
+import { NovaReservaComponent } from "./nova-reserva/nova-reserva.component";
+import { MinhasReservasComponent } from "./reservas/minhas-reservas.component";
 
 
 const routes: Routes = [
     {
         path: '',
         component: MinhasReservasComponent
+    },
+    {
+        path:'novaReserva',
+        component: NovaReservaComponent
     }
 ]
 

@@ -1,0 +1,22 @@
+<div class="container-fluid h-100">
+    <h1 class="text-center mb-5">Login</h1>
+    <div class="row justify-content-center align-items-center h-100">
+        <div class="col col-lg-12 col-md-6 col-lg-4 col-xl-3">           
+                <div class="form-group">
+                    
+                    <input [(ngModel)]="usuario.login" _ngcontent-c0="" class="form-control form-control-lg" placeholder="Usuário" type="text">
+                </div>
+                <div class="form-group">
+                   
+                    <input [(ngModel)]="usuario.senha" class="form-control form-control-lg" placeholder="Senha" type="password">
+                  
+                </div>
+                
+                <div class="form-group">
+                    <button class="btn btn-success btn-md btn-block" (click)="fazerLogin()">Login</button>
+                    <button class="btn btn-info btn-md btn-block">Cadastrar</button>
+                </div>
+           
+        </div>
+    </div>
+</div>

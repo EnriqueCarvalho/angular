@@ -1,0 +1,49 @@
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Sucesso</h4>
+  
+     
+  </div>
+  <div class="modal-body">
+    Reserva feita com sucesso
+   
+  </div>
+  <button type="button"  class="btn btn-success  mt-5 m-2" (click)="modalRef?.hide();home()">Fechar</button>
+</ng-template>
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+
+  <div class="form-row">
+    <div class="col">
+      <label for="exampleFormControlSelect1">Local</label>
+      <select class="form-control" id="exampleFormControlSelect1" ngModel name="local" required>
+        <option>Dalla Favera</option>
+        <option>Clube Dores</option>
+        <option>Basso</option>
+        <option>Ginásio do Pito</option>
+      </select>
+    </div>
+    <div class="col">
+      <label for="exampleFormControlSelect2">Ambiente</label>
+      <select class="form-control" id="exampleFormControlSelect2" ngModel name="ambiente" required>
+        <option>Campo</option>
+        <option>Quadra 1 </option>
+        <option>Quadra 2 </option>
+        <option>Churasqueira</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mt-5">
+  <div class="mb-3 col ">
+    <label for="exampleFormControlInput1" class="form-label">Data</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1" ngModel name="data" required>
+  </div>
+    <div class="mb-3 col">
+    <label for="exampleFormControlInput1" class="form-label">Horário</label>
+    <input type="time" class="form-control" id="exampleFormControlInput1" ngModel name="horario" required>
+  </div>
+</div>
+<button type="submit"  class="btn btn-success text-right mt-5">Reservar</button>
+
+  
+</form>

@@ -1,4 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5" *ngIf="mostrarMenu"> -->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
   <a class="navbar-brand" routerLink="">VPF reservas</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -10,12 +11,36 @@
         <a class="nav-link">Quadras</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="clientes">Minhas reservas</a>
+        <a class="nav-link" routerLink="clientes">Reservas</a>
       </li>
    
     </ul>
   </div>
-</nav>
-<div class="container">
+</nav> -->
+<div>
+<div id="mobile-nav" onclick="  $('nav').toggleClass('active');">
+  <p><i class="fas fa-bars"></i></p> 
+</div>
+<div class="nav-top">
+  <p>
+    
+    <i class="fas fa-sign-out-alt fa-2x"></i>
+  </p>
+</div>
+  <nav>
+    <ul class="menu">
+      <li>
+        <a routerLink="" onclick="  $('nav').removeClass('active');">
+          <i class="fas fa-home fa-lg p-25"></i>Página Inicial
+        </a>
+      </li>
+      <li>
+        <a routerLink="clientes" onclick="  $('nav').removeClass('active');">
+          <i class="far fa-calendar-check fa-lg p-25"></i> <span>Reservas</span></a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="container" >
   <router-outlet></router-outlet>
 </div>
