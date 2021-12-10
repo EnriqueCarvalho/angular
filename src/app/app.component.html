@@ -1,22 +1,5 @@
 <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5" *ngIf="mostrarMenu"> -->
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
-  <a class="navbar-brand" routerLink="">VPF reservas</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
- 
-      <li class="nav-item">
-        <a class="nav-link">Quadras</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="clientes">Reservas</a>
-      </li>
-   
-    </ul>
-  </div>
-</nav> -->
+
 <div>
 <div id="mobile-nav" onclick="  $('nav').toggleClass('active');">
   <p><i class="fas fa-bars"></i></p> 
@@ -37,6 +20,10 @@
       <li>
         <a routerLink="clientes" onclick="  $('nav').removeClass('active');">
           <i class="far fa-calendar-check fa-lg p-25"></i> <span>Reservas</span></a>
+      </li>
+       <li>
+        <a routerLink="clientes/quadras" onclick="  $('nav').removeClass('active');">
+          <i class="fas fa-map-marker-alt  fa-lg p-25"></i> <span>Quadras</span></a>
       </li>
     </ul>
   </nav>

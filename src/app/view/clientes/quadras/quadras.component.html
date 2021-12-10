@@ -1,0 +1,40 @@
+<h1>Quadras Disponíveis</h1>
+
+<div class="d-flex flex-wrap justify-content-between">
+<ng-template  ngFor [ngForOf]="quadras" let-quadra let-i="index">
+    <div class="card m-3" style="width: 18rem;">
+        
+        <div class="card-body">
+          <h5 class="card-title">{{ quadra.nome }}</h5>
+          <p class="card-text" style="height: 100px;">{{ quadra.descricao }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+              <p>Avaliações</p>
+              <rating 
+                [(ngModel)]="quadra.avaliacao" 
+                [max]="5"  
+                [customTemplate]="tt" 
+                [readonly]="true">
+              </rating>
+            </li>
+            <li class="list-group-item">
+              <p>Alguns espaços</p>
+              <ng-template  ngFor [ngForOf]="quadra.ambientes" let-ambiente let-j="index">
+                 {{ ambiente.nome }},
+              </ng-template>
+                
+            </li>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Ver mais</a>
+        </div>
+      </div>
+  </ng-template >
+</div>
+<ng-template #tt let-i="index" let-v="value">
+    <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+      {{i < v ? '&#9733;' : '&#9734;'}}
+    </button>
+  </ng-template>
+

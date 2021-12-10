@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
-import { ClientesGuard } from './guards/clientes.guard';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './controller/guards/auth.guard';
+import { ClientesGuard } from './controller/guards/clientes.guard';
+import { HomeComponent } from './view/home/home.component';
+import { LoginComponent } from './view/login/login.component';
 
 
 
@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'clientes',
   //canActivate: [AuthGuard],
   //canActivateChild: [ClientesGuard],
-  loadChildren: () => import('./clientes/clientes.module').then (m=>m.ClientesModule)
+  loadChildren: () => import('./view/clientes/clientes.module').then (m=>m.ClientesModule)
 
   }
 ];

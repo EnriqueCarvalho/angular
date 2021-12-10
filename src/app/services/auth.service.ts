@@ -1,6 +1,8 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Usuario } from './Usuario';
+import { Usuario } from '../model/Usuario';
+
+
 
 @Injectable({
   providedIn: 'root'

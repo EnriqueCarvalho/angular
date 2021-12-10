@@ -5,15 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './view/home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './login/auth.service';
+import { LoginComponent } from './view/login/login.component';
+
 
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthGuard } from './guards/auth.guard';
-import { ClientesGuard } from './guards/clientes.guard';
+import { AuthGuard } from './controller/guards/auth.guard';
+import { ClientesGuard } from './controller/guards/clientes.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
@@ -21,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { ModalConfirmacaoComponent } from './modal-confirmacao/modal-confirmacao.component';
+import { ModalConfirmacaoComponent } from './view/modal-confirmacao/modal-confirmacao.component';
+import { AuthService } from './services/auth.service';
 
 
 

@@ -1,8 +1,8 @@
 import { Component, OnInit, ResolvedReflectiveFactory, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ReservasService } from '../reservas.service';
-import { Reservas } from '../reservas/Reservas';
+import { ReservasService } from 'src/app/services/reservas.service';
+import { Reservas } from '../../../model/Reservas';
 
 
 @Component({
