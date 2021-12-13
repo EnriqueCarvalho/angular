@@ -21,6 +21,12 @@ const routes: Routes = [
   //canActivateChild: [ClientesGuard],
   loadChildren: () => import('./view/clientes/clientes.module').then (m=>m.ClientesModule)
 
+  },
+  { path: 'quadras',
+  //canActivate: [AuthGuard],
+  //canActivateChild: [ClientesGuard],
+  loadChildren: () => import('./view/quadras/quadras.module').then (m=>m.QuadrasModule)
+
   }
 ];
 

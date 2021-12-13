@@ -10,4 +10,5 @@ export class Quadra{
     avaliacao: string = '' 
     cnpj: string = '' 
     descricao: string = ''
+    nroAvaliacoes: Number = 0
 }

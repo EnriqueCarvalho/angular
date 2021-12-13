@@ -36,12 +36,11 @@ export class NovaReservaComponent implements OnInit {
 
     if(form.valid){
       let reserva: Reservas = new Reservas();
-      let reservasService:ReservasService = new ReservasService();
       reserva.local= form.value.local
       reserva.ambiente= form.value.ambiente
       reserva.data= form.value.data
       reserva.horario= form.value.horario
-      let ret = reservasService.novaReserva(reserva)
+     this.reservasService.novaReserva(reserva)
       this.openModal(this.template)
       //this.router.navigate(['/'])
     }

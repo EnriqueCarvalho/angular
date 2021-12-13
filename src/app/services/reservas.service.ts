@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Reservas } from '../model/Reservas';
+import { AmbienteService } from './ambiente.service';
+import { QuadrasService } from './quadras.service';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +21,56 @@ export class ReservasService {
 
     reservas=[{
       id: '123',
-      local: 'Inter SM' ,
-      ambiente: 'Campo de Futebol',
-      data: '12/12/2012',
-      horario: '19:30'
+      quadra: this.quadraService.getQuadrasById(1),
+      ambiente: this.ambienteService.getAmbiente('1'), 
+      cliente: [{nome:'Enrique'}],     
+      local: 'Dalla Favera' ,  
+      data: '13/12/2012',
+      horario: '22:30'
     },{
       id: '123',
-      local: 'Dalla Favera' ,
-      ambiente: 'Quadra/Churrasqueira',
+      quadra: this.quadraService.getQuadrasById(1),
+      ambiente: this.ambienteService.getAmbientes('1'), 
+      cliente: [{nome:'Enrique'}],     
+      local: 'Dalla Favera' ,  
       data: '13/12/2012',
       horario: '22:30'
     } ]
     return reservas;   
   }
-  constructor() { }
+
+  getReservasByQuadra(idQuadra:string ){
+    let reservas: Reservas[] = []
+
+    reservas=[{
+      id: '123',
+      quadra: this.quadraService.getQuadrasById(1),
+      ambiente: this.ambienteService.getAmbientes('1'), 
+      cliente: [{nome:'Enrique'}],     
+      local: 'Dalla Favera' ,  
+      data: '13/12/2012',
+      horario: '22:30'
+    },{
+      id: '123',
+      quadra: this.quadraService.getQuadrasById(1),
+      ambiente: this.ambienteService.getAmbientes('1'), 
+      cliente: [{nome:'Fernando'}],     
+      local: 'Dalla Favera' ,  
+      data: '13/12/2012',
+      horario: '22:30'
+    },{
+      id: '123',
+      quadra: this.quadraService.getQuadrasById(1),
+      ambiente: this.ambienteService.getAmbiente(1), 
+      cliente: [{nome:'Rodrigo'}],     
+      local: 'Dalla Favera' ,  
+      data: '13/12/2012',
+      horario: '22:30'
+    }]
+    return reservas;  
+  }
+  constructor(
+    private ambienteService:AmbienteService,
+    private quadraService:QuadrasService,
+    ) { }
 }

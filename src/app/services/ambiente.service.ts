@@ -26,6 +26,18 @@ export class AmbienteService {
     }
   ]
   return this.ambiente
+  } 
+  
+  
+  getAmbiente(idQuadra: any){
+    this.ambiente = [{
+      idAmbiente:   '1',
+      nome: 'Quadra 1',
+      descricao: 'Quadra de esportes coberta',
+      capacidadeMax:  '20'
+    }
+  ]
+  return this.ambiente
   }
   constructor() { }
 }

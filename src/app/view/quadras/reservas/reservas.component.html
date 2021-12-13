@@ -1,0 +1,13 @@
+
+
+   <ng-template  ngFor [ngForOf]="reservas" let-reserva let-i="index">
+    <accordion [isAnimated]="true">
+        <accordion-group [heading]="reserva.data ">
+          <p>Horario: {{ reserva.horario }}</p>
+          <p>Nome : {{ reserva.cliente[0].nome }}</p>
+          <p>Local: {{ reserva.local }}</p>
+          <p>Ambiente: {{ reserva.ambiente[0].nome }}</p>
+        </accordion-group>
+        </accordion>
+  </ng-template >
+
