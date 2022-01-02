@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './controller/guards/auth.guard';
 import { ClientesGuard } from './controller/guards/clientes.guard';
+import { QuadrasGuard } from './controller/guards/quadras.guard';
 import { HomeComponent } from './view/home/home.component';
 import { LoginComponent } from './view/login/login.component';
 
@@ -13,7 +14,7 @@ const routes: Routes = [
     component:LoginComponent
   },
   { path: '', 
- // canActivate: [AuthGuard],
+   //canActivate: [AuthGuard],
    component: HomeComponent 
   },
   { path: 'clientes',
@@ -24,7 +25,7 @@ const routes: Routes = [
   },
   { path: 'quadras',
   //canActivate: [AuthGuard],
-  //canActivateChild: [ClientesGuard],
+  //canActivateChild: [QuadrasGuard],
   loadChildren: () => import('./view/quadras/quadras.module').then (m=>m.QuadrasModule)
 
   }

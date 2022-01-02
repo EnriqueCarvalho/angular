@@ -5,16 +5,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientesGuard implements CanActivateChild {
+export class QuadrasGuard implements CanActivateChild {
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(sessionStorage.getItem("tipoUsuario") == 'c'){
-        return true;
+      if(sessionStorage.getItem("tipoUsuario")== 'q'){
+        return true
       }
+      
       return false
-   
   }
   
 }

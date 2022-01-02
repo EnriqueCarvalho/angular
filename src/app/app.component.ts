@@ -8,8 +8,7 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   title = 'frontend';
-
-  
+  tipoUsuario: any =''
    
 
   mostrarMenu: boolean = false
@@ -21,6 +20,7 @@ export class AppComponent {
     this.authService.mostrarMenuEmitter.subscribe(
       mostrar => this.mostrarMenu = mostrar
     )
+    this.tipoUsuario=sessionStorage.getItem("tipoUsuario")
 
   
   }

@@ -18,11 +18,19 @@ export class AuthService {
       if (usuario.login === 'admin' && usuario.senha === 'admin'){
         sessionStorage.setItem('login',usuario.login);
         sessionStorage.setItem('idUsuario','01');
+        sessionStorage.setItem('tipoUsuario','q');
+        this.usuarioAutenticado = true;
+        this.mostrarMenuEmitter.emit(true)
+        this.router.navigate(['/'])
+      }else if(usuario.login === 'cli' && usuario.senha === 'cli'){
+        sessionStorage.setItem('login',usuario.login);
+        sessionStorage.setItem('idUsuario','02');
         sessionStorage.setItem('tipoUsuario','c');
         this.usuarioAutenticado = true;
         this.mostrarMenuEmitter.emit(true)
         this.router.navigate(['/'])
-      }else{
+      }
+      else{
         this.usuarioAutenticado = false
         this.mostrarMenuEmitter.emit(false)
       }  
