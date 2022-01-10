@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Quadra } from 'src/app/model/Quadra';
-import { QuadrasService } from 'src/app/services/quadras.service';
+import { Quadra } from 'src/app/quadras/model/Quadra';
+import { QuadrasService } from './service/quadras.service';
+
 
 
 @Component({

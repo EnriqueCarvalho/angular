@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Ambiente } from '../model/Ambiente';
+import { Quadra } from '../model/Quadra';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AmbienteService {
-    private ambiente: Ambiente[] = []
+   
 
   getAmbientes(idQuadra: any){
-    this.ambiente = [{
+    let ambiente: Ambiente[] = []
+    ambiente = [{
       idAmbiente:   '1',
       nome: 'Quadra 1',
       descricao: 'Quadra de esportes coberta',
@@ -25,19 +27,20 @@ export class AmbienteService {
       capacidadeMax:  '30'
     }
   ]
-  return this.ambiente
+  return ambiente
   } 
   
   
   getAmbiente(idQuadra: any){
-    this.ambiente = [{
+    let ambiente: Ambiente[] = []
+    ambiente = [{
       idAmbiente:   '1',
       nome: 'Quadra 1',
       descricao: 'Quadra de esportes coberta',
       capacidadeMax:  '20'
     }
   ]
-  return this.ambiente
+  return ambiente
   }
   constructor() { }
 }

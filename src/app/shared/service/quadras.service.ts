@@ -3,6 +3,7 @@ import { Quadra } from '../model/Quadra';
 import { AmbienteService } from './ambiente.service';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,10 @@ export class QuadrasService {
  
 
    getQuadras(){
-        let quadras = [{
+
+    let quadras: Quadra[] = []
+
+         quadras = [{
           id : '',
           ambientes: this.ambiente.getAmbientes(1),
           nome : 'Dalla Favera',
@@ -57,7 +61,8 @@ export class QuadrasService {
   }
 
   getQuadrasById(id:number){
-    let quadras = [{
+    let quadras: Quadra[] = []
+     quadras = [{
       id : '',
       ambientes: this.ambiente.getAmbientes(1),
       nome : 'Dalla Favera',

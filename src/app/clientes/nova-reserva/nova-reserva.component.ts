@@ -2,7 +2,7 @@ import { Component, OnInit, ResolvedReflectiveFactory, TemplateRef, ViewChild } 
 import { Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReservasService } from 'src/app/services/reservas.service';
-import { Reservas } from '../../../model/Reservas';
+import { Reservas } from '../../model/Reservas';
 
 
 @Component({
