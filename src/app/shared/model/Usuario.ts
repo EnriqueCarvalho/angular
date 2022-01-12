@@ -1,8 +1,8 @@
 export class Usuario{
-    login: string = '';
-    senha: string = '';
-    email: string = '';
-    restricao: string = '';    
+    login?: string = '';
+    senha?: string = '';
+    email?: string = '';
+    restricao?: string = '';    
 
   
 

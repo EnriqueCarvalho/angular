@@ -1,6 +1,7 @@
 import { Ambiente } from "./Ambiente"
+import { Usuario } from "./Usuario"
 
-export class Quadra{
+export class Quadra extends Usuario{
     id: string = ''
     ambientes: Ambiente []= [] 
     nome: string = ''
