@@ -1,6 +1,7 @@
 import { Ambiente } from "./Ambiente"
-import { Cliente } from "../clientes/model/Cliente"
-import { Quadra } from "../quadras/model/Quadra"
+import { Cliente } from "./Cliente"
+import { Quadra } from "./Quadra"
+
 
 export class Reservas {
     id : string = ''

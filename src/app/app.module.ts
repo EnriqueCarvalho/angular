@@ -9,7 +9,6 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 
-
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
@@ -25,10 +24,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './shared/components/login/login.component';
 import { ModalConfirmacaoComponent } from './shared/components/modal-confirmacao/modal-confirmacao.component';
 import { AuthService } from './shared/service/auth.service';
-
-
-
-
 
 
 

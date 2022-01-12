@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Reservas } from 'src/app/model/Reservas';
-import { ReservasService } from 'src/app/services/reservas.service';
+import { Reservas } from 'src/app/shared/model/Reservas';
+import { ReservasService } from 'src/app/shared/service/reservas.service';
+
 
 
 @Component({
