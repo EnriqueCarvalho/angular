@@ -6,7 +6,7 @@ import { Quadra } from "./Quadra"
 export class Reservas {
     id : string = ''
     ambiente : Ambiente[] = []
-    quadra : Quadra[] = []
+    quadra?: Quadra
     cliente : Cliente[] = []
     local: string = '' 
     data: string = '' 

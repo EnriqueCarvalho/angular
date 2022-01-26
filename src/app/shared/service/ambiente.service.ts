@@ -8,8 +8,8 @@ import { Quadra } from '../model/Quadra';
 export class AmbienteService {
    
 
-  getAmbientes(idQuadra: any){
-    let ambiente: Ambiente[] = []
+  getAmbientes(idQuadra: any): Ambiente[]{
+    let ambiente: Ambiente[];
     ambiente = [{
       idAmbiente:   '1',
       nome: 'Quadra 1',
