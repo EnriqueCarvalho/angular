@@ -14,18 +14,18 @@ const routes: Routes = [
     component:LoginComponent
   },
   { path: '', 
-   //canActivate: [AuthGuard],
+   canActivate: [AuthGuard],
    component: HomeComponent 
   },
   { path: 'clientes',
-  //canActivate: [AuthGuard],
-  //canActivateChild: [ClientesGuard],
+  canActivate: [AuthGuard],
+  canActivateChild: [ClientesGuard],
   loadChildren: () => import('./clientes/clientes.module').then (m=>m.ClientesModule)
 
   },
   { path: 'quadras',
-  //canActivate: [AuthGuard],
-  //canActivateChild: [QuadrasGuard],
+  canActivate: [AuthGuard],
+  canActivateChild: [QuadrasGuard],
   loadChildren: () => import('./quadras/quadras.module').then (m=>m.QuadrasModule)
 
   }

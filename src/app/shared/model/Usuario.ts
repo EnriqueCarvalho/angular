@@ -1,8 +1,13 @@
+import { Cliente } from "./Cliente"
+import { Quadra } from "./Quadra"
+
 export class Usuario{
-    login?: string = '';
-    senha?: string = '';
-    email?: string = '';
-    restricao?: string = '';    
+    id: string = ''
+    login: string = ''
+    senha: string  = ''
+    restricao: string = ''  
+    cliente?: Cliente
+    quadra?: Quadra   
 
   
 

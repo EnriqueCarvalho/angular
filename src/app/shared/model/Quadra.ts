@@ -1,9 +1,10 @@
 import { Ambiente } from "./Ambiente"
 import { Usuario } from "./Usuario"
 
-export class Quadra extends Usuario{
+export class Quadra {
     id: string = ''
     ambientes: Ambiente []= [] 
+    usuario?: Usuario
     nome: string = ''
     bairro: string = ''
     numero: string = ''

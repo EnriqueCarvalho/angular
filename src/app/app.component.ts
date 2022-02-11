@@ -18,11 +18,17 @@ export class AppComponent {
 
 
   ngOnInit(){
-    this.authService.mostrarMenuEmitter.subscribe(
-      mostrar => this.mostrarMenu = mostrar
-    )
-    this.tipoUsuario=sessionStorage.getItem("tipoUsuario")
 
-  
+    this.authService.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar)
+
+    this.authService.usuarioLogadoEmitter.subscribe(
+      u =>this.tipoUsuario = u.restricao
+    )  
+  }
+
+  logout(){
+    console.log("logout")
+    this.authService.logout();
   }
 }

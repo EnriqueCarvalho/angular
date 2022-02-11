@@ -10,7 +10,7 @@ export class ClientesGuard implements CanActivateChild {
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(sessionStorage.getItem("tipoUsuario") == 'c'){
+      if(sessionStorage.getItem("tipoUsuario") == 'U'){
         return true;
       }
       return false

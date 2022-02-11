@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { shiftDate } from 'ngx-bootstrap/chronos';
+import { Observable } from 'rxjs';
 import { Usuario } from '../model/Usuario';
 
 
@@ -9,36 +12,45 @@ import { Usuario } from '../model/Usuario';
 })
 export class AuthService {
   private usuarioAutenticado: boolean = false
+  private readonly API_URL = 'http://localhost:8080/';
+
   mostrarMenuEmitter = new EventEmitter<boolean>()
+  usuarioLogadoEmitter = new EventEmitter<Usuario>()
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private http: HttpClient) { }
 
-  fazerLogin(usuario: Usuario){
 
-      if (usuario.login === 'admin' && usuario.senha === 'admin'){
-        sessionStorage.setItem('login',usuario.login);
-        sessionStorage.setItem('idUsuario','01');
-        sessionStorage.setItem('tipoUsuario','q');
-        this.usuarioAutenticado = true;
-        this.mostrarMenuEmitter.emit(true)
-        this.router.navigate(['/'])
-      }else if(usuario.login === 'cli' && usuario.senha === 'cli'){
-        sessionStorage.setItem('login',usuario.login);
-        sessionStorage.setItem('idUsuario','02');
-        sessionStorage.setItem('tipoUsuario','c');
-        this.usuarioAutenticado = true;
-        this.mostrarMenuEmitter.emit(true)
-        this.router.navigate(['/'])
-      }
-      else{
-        this.usuarioAutenticado = false
-        this.mostrarMenuEmitter.emit(false)
-      }  
-      
+
+
+  fazerLogin(usuario: Usuario): Observable<Usuario>{
+    console.log(usuario)
+      return this.http.post<Usuario>(this.API_URL+'login', usuario);     
   }
 
-  isAutenticado(){
-    return this.usuarioAutenticado
+  setUsuarioLogado(usuario: Usuario){
+    sessionStorage.setItem('usuario-logado', JSON.stringify(usuario));
+    this.usuarioAutenticado = true;
+    this.mostrarMenuEmitter.emit(true)
+    this.usuarioLogadoEmitter.emit(usuario)
+    this.router.navigate(["/"])
+  }
+
+  isAutenticado():boolean{
+    let u: Usuario = JSON.parse(<string>sessionStorage.getItem("usuario-logado"))
+    if(u){
+      return true
+    }
+    return false;
+  }
+
+  getUsuarioLogado(): Usuario{
+    return JSON.parse(<string>sessionStorage.getItem("usuario-logado"))
+  }
+
+  logout(): void{
+    sessionStorage.removeItem("usuario-logado");
+    this.mostrarMenuEmitter.emit(false)
+    this.router.navigate(['/login']);
   }
 
 }
