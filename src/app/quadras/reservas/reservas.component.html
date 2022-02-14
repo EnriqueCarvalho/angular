@@ -4,9 +4,9 @@
     <accordion [isAnimated]="true">
         <accordion-group [heading]="reserva.data ">
           <p>Horario: {{ reserva.horario }}</p>
-          <p>Nome : {{ reserva.cliente[0].nome }}</p>
-          <p>Local: {{ reserva.local }}</p>
-          <p>Ambiente: {{ reserva.ambiente[0].nome }}</p>
+          <p>Nome : {{ reserva.cliente.nome }}</p>
+          <p>Local: {{ reserva.quadra.nome }}</p>
+          <p>Ambiente: {{ reserva.ambiente.nome }}</p>
         </accordion-group>
         </accordion>
   </ng-template >

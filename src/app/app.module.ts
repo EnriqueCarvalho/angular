@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +25,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './shared/components/login/login.component';
 import { ModalConfirmacaoComponent } from './shared/components/modal-confirmacao/modal-confirmacao.component';
 import { AuthService } from './shared/service/auth.service';
+import { ErrorhandlerService } from './shared/service/errorhandler.service';
+import { JwtinterceptorService } from './shared/service/jwtinterceptor.service';
 
 
 
@@ -57,7 +59,9 @@ import { AuthService } from './shared/service/auth.service';
     ClientesGuard,
     FontAwesomeModule,
     BrowserAnimationsModule,
-    BsDatepickerModule  
+    BsDatepickerModule,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtinterceptorService, multi: true},
+    {provide: ErrorHandler, useClass: ErrorhandlerService}  
   ],
   bootstrap: [AppComponent],
 

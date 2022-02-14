@@ -23,7 +23,7 @@ export class AuthService {
 
 
   fazerLogin(usuario: Usuario): Observable<Usuario>{
-    console.log(usuario)
+    //console.log(usuario)
       return this.http.post<Usuario>(this.API_URL+'login', usuario);     
   }
 

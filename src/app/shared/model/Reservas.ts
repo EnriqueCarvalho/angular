@@ -4,11 +4,10 @@ import { Quadra } from "./Quadra"
 
 
 export class Reservas {
-    id : string = ''
-    ambiente : Ambiente[] = []
-    quadra?: Quadra
-    cliente : Cliente[] = []
-    local: string = '' 
+    idReserva : string = ''
+    ambiente : Ambiente = new Ambiente
+    quadra: Quadra=new Quadra
+    cliente : Cliente= new Cliente 
     data: string = '' 
     horario: string = '' 
 }

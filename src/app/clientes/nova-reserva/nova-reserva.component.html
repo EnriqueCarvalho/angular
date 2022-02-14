@@ -16,20 +16,14 @@
   <div class="form-row">
     <div class="col">
       <label for="exampleFormControlSelect1">Local</label>
-      <select class="form-control" id="exampleFormControlSelect1"  formControlName="local" >
-        <option>Dalla Favera</option>
-        <option>Clube Dores</option>
-        <option>Basso</option>
-        <option>Ginásio do Pito</option>
+      <select class="form-control" id="exampleFormControlSelect1"  formControlName="local" (change)="onSelect()">
+        <option *ngFor="let local of quadras" [value]="local.idQuadra">{{ local.nome }}</option>
       </select>
     </div>
     <div class="col">
       <label for="exampleFormControlSelect2">Ambiente</label>
       <select class="form-control" id="exampleFormControlSelect2"  formControlName="ambiente" >
-        <option>Campo</option>
-        <option>Quadra 1 </option>
-        <option>Quadra 2 </option>
-        <option>Churasqueira</option>
+        <option *ngFor="let amb of ambientes" [value]="amb.idAmbiente">{{ amb.nome }}</option>
       </select>
     </div>
   </div>
@@ -40,8 +34,10 @@
   </div>
     <div class="mb-3 col">
     <label for="exampleFormControlInput1" class="form-label">Horário</label>
-    <input type="time" class="form-control" id="exampleFormControlInput1"  formControlName="horario" >
+    <input type="time" class="form-control" id="exampleFormControlInput1" step="1" formControlName="horario" >
   </div>
+
+  
 </div>
 <button type="submit"  class="btn btn-success text-right mt-5">Reservar</button>
 

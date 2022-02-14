@@ -1,76 +1,46 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Reservas } from '../model/Reservas';
 import { AmbienteService } from './ambiente.service';
+import { AuthService } from './auth.service';
 import { QuadrasService } from './quadras.service';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservasService {
 
-  novaReserva(reserva: Reservas){
-    console.log("Cadastrando nova reserva")
-    console.log(sessionStorage.getItem('login'))
-    console.log(sessionStorage.getItem('idUsuario'))
-    console.log(reserva)
-    return true
-  }
+  private readonly API_URL = 'http://localhost:8080/';
 
-  getMinhasReservas(){
-    let reservas: Reservas[] = []
-
-    reservas=[{
-      id: '123',
-      quadra: this.quadraService.getQuadrasById(1),
-      ambiente: this.ambienteService.getAmbiente('1'), 
-      cliente: [{nome:'Enrique'}],     
-      local: 'Dalla Favera' ,  
-      data: '13/12/2012',
-      horario: '22:30'
-    },{
-      id: '123',
-      quadra: this.quadraService.getQuadrasById(1),
-      ambiente: this.ambienteService.getAmbientes('1'), 
-      cliente: [{nome:'Enrique'}],     
-      local: 'Dalla Favera' ,  
-      data: '13/12/2012',
-      horario: '22:30'
-    } ]
-    return reservas;   
-  }
-
-  getReservasByQuadra(idQuadra:string ){
-    let reservas: Reservas[] = []
-
-    reservas=[{
-      id: '123',
-      quadra: this.quadraService.getQuadrasById(1),
-      ambiente: this.ambienteService.getAmbientes('1'), 
-      cliente: [{nome:'Enrique'}],     
-      local: 'Dalla Favera' ,  
-      data: '13/12/2012',
-      horario: '22:30'
-    },{
-      id: '123',
-      quadra: this.quadraService.getQuadrasById(1),
-      ambiente: this.ambienteService.getAmbientes('1'), 
-      cliente: [{nome:'Fernando'}],     
-      local: 'Dalla Favera' ,  
-      data: '13/12/2012',
-      horario: '22:30'
-    },{
-      id: '123',
-      quadra: this.quadraService.getQuadrasById(1),
-      ambiente: this.ambienteService.getAmbiente(1), 
-      cliente: [{nome:'Rodrigo'}],     
-      local: 'Dalla Favera' ,  
-      data: '13/12/2012',
-      horario: '22:30'
-    }]
-    return reservas;  
-  }
   constructor(
     private ambienteService:AmbienteService,
     private quadraService:QuadrasService,
+    private http: HttpClient,
+    private authService: AuthService
     ) { }
+
+  novaReserva(reserva: Reservas){
+    console.log("Cadastrando nova Reserva")
+    console.log(reserva)
+    return this.http.post(this.API_URL+'api/reservas/novaReserva', reserva, {responseType: 'text'});
+  
+  }
+  
+  getReservasByQuadra():Observable<Reservas[]>{ 
+
+    return this.http.get<Reservas[]>(this.API_URL+'api/reservas/getReservas')
+    .pipe(
+      tap(u => console.log(u))
+    );
+  }
+
+  getMinhasReservas():Observable<Reservas[]>{
+    return this.http.get<Reservas[]>(this.API_URL+'api/reservas/getMinhasReservas')
+    .pipe(
+      tap(u => console.log(u))
+    );
+  }
+
 }

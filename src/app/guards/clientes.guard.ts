@@ -1,16 +1,19 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivateChild, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AuthService } from '../shared/service/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientesGuard implements CanActivateChild {
+
+  constructor(private authService:AuthService) { }
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-      if(sessionStorage.getItem("tipoUsuario") == 'U'){
+      if(this.authService.getUsuarioLogado().restricao == "[U]"){
         return true;
       }
       return false

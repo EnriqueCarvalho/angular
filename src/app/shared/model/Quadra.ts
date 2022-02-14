@@ -2,7 +2,7 @@ import { Ambiente } from "./Ambiente"
 import { Usuario } from "./Usuario"
 
 export class Quadra {
-    id: string = ''
+    idQuadra: string = ''
     ambientes: Ambiente []= [] 
     usuario?: Usuario
     nome: string = ''

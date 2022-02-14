@@ -12,10 +12,16 @@ export class ReservasComponent implements OnInit {
 
    public reservas:Reservas[] = []
 
-  constructor(private reservasService: ReservasService) { }
+  constructor(private reservasService: ReservasService) { 
+    this.reservasService.getReservasByQuadra().subscribe(u=>{
+        this.reservas=u
+        
+    })
+
+  }
 
   ngOnInit(): void {
-    this.reservas = this.reservasService.getReservasByQuadra('123')
+   
     
   }
 

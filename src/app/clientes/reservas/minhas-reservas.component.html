@@ -7,18 +7,81 @@
         <th scope="col">Ambiente</th>
         <th scope="col">Data</th>
         <th scope="col">Horário</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <ng-template  ngFor [ngForOf]="reservas" let-reserva let-i="index">
         <tr>
           <th scope="row">{{i+1}}</th>
-          <td>{{reserva.local}}</td>
-          <td>{{reserva.ambiente[0].nome}}</td>
+          <td>{{reserva.quadra.nome}}</td>
+          <td>{{reserva.ambiente.nome}}</td>
           <td>{{reserva.data}}</td>
-          <td>{{reserva.horario}}</td>        
+          <td>{{reserva.horario}}</td>  
+          <td><i class="fa fa-edit" (click)="openModal(template);editar(this.reserva)"></i></td>        
         </tr>
       </ng-template >
     </tbody>
   </table>
+  
   <button type="button" class="btn btn-success text-right" routerLink="novaReserva">Nova reserva</button>
+
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left" id="my-modal-title">Modal title</h4>
+      <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formularioModal" (ngSubmit)="submit()"  >
+
+        <div class="form-row">
+          <div class="col">
+            <label for="exampleFormControlSelect1">Local</label>
+            <select class="form-control" id="exampleFormControlSelect1"  formControlName="local" (change)="onSelect()">
+              <option *ngFor="let local of quadras" [value]="local.idQuadra">{{ local.nome }}</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="exampleFormControlSelect2">Ambiente</label>
+            <select class="form-control" id="exampleFormControlSelect2"  formControlName="ambiente" >
+              <option *ngFor="let amb of ambientes" [value]="amb.idAmbiente">{{ amb.nome }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-5">
+        <div class="mb-3 col ">
+          <label for="exampleFormControlInput1" class="form-label">Data</label>
+          <input type="date" class="form-control" id="exampleFormControlInput1"  formControlName="data" >
+        </div>
+          <div class="mb-3 col">
+          <label for="exampleFormControlInput1" class="form-label">Horário</label>
+          <input type="time" class="form-control" id="exampleFormControlInput1" step="1" formControlName="horario" >
+        </div>
+        <input type="text" style="display:none;" class="form-control" id="exampleFormControlInput1"  formControlName="idReserva" >
+      
+        
+      </div>
+      <div class="btns">
+        <button (click)="modalRef?.hide()" type="submit"  class="btn btn-success text-right mt-5">Salvar</button>
+        <button (click)="modalRef?.hide()" class="btn btn-danger text-right mt-5 ml-5">Excluir</button>
+    </div>
+        
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #templateConfirm>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Sucesso</h4>
+    
+       
+    </div>
+    <div class="modal-body">
+      Reserva feita com sucesso
+     
+    </div>
+    <button type="button"  class="btn btn-success  mt-5 m-2" (click)="modalRef?.hide();home()">Fechar</button>
+  </ng-template>

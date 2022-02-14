@@ -5,6 +5,7 @@ export class Usuario{
     id: string = ''
     login: string = ''
     senha: string  = ''
+    token:string = ''
     restricao: string = ''  
     cliente?: Cliente
     quadra?: Quadra   
