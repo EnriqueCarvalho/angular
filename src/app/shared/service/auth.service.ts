@@ -38,6 +38,7 @@ export class AuthService {
   isAutenticado():boolean{
     let u: Usuario = JSON.parse(<string>sessionStorage.getItem("usuario-logado"))
     if(u){
+      this.mostrarMenuEmitter.emit(true)
       return true
     }
     return false;
@@ -51,6 +52,11 @@ export class AuthService {
     sessionStorage.removeItem("usuario-logado");
     this.mostrarMenuEmitter.emit(false)
     this.router.navigate(['/login']);
+  }
+  getPermissaoUsuarioLogado():void{
+      if(this.isAutenticado()){
+        this.usuarioLogadoEmitter.emit(this.getUsuarioLogado())
+      }
   }
 
 }

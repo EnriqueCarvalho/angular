@@ -27,7 +27,9 @@ import { ModalConfirmacaoComponent } from './shared/components/modal-confirmacao
 import { AuthService } from './shared/service/auth.service';
 import { ErrorhandlerService } from './shared/service/errorhandler.service';
 import { JwtinterceptorService } from './shared/service/jwtinterceptor.service';
+import { AlertsComponent } from './shared/components/alerts/alerts.component';
 
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 
@@ -37,7 +39,8 @@ import { JwtinterceptorService } from './shared/service/jwtinterceptor.service';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ModalConfirmacaoComponent
+    ModalConfirmacaoComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import { JwtinterceptorService } from './shared/service/jwtinterceptor.service';
     BrowserAnimationsModule,
     BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    AlertModule.forRoot()
     
   ],
  

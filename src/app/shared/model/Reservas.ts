@@ -10,4 +10,5 @@ export class Reservas {
     cliente : Cliente= new Cliente 
     data: string = '' 
     horario: string = '' 
+    ativo: string = ''
 }

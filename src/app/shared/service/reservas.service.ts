@@ -6,6 +6,7 @@ import { AmbienteService } from './ambiente.service';
 import { AuthService } from './auth.service';
 import { QuadrasService } from './quadras.service';
 import { tap } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ReservasService {
     private authService: AuthService
     ) { }
 
-  novaReserva(reserva: Reservas){
+  novaReserva(reserva: Reservas):Observable<string>{
     console.log("Cadastrando nova Reserva")
     console.log(reserva)
     return this.http.post(this.API_URL+'api/reservas/novaReserva', reserva, {responseType: 'text'});
@@ -41,6 +42,23 @@ export class ReservasService {
     .pipe(
       tap(u => console.log(u))
     );
+  }
+
+  excluirReserva(reserva: Reservas){
+    console.log("Deletando Reserva")
+    console.log(reserva)
+    return this.http.post(this.API_URL+'api/reservas/deletarReserva', reserva, {responseType: 'text'});
+  
+  }
+
+  validarGetHorario(formulario:FormGroup):boolean{
+    
+    if(formulario.get('local')?.valid &&
+      formulario.get('ambiente')?.valid && 
+      formulario.get('data')?.valid ){
+      return true 
+    }
+    return false
   }
 
 }

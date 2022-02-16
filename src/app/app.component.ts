@@ -23,8 +23,10 @@ export class AppComponent {
       mostrar => this.mostrarMenu = mostrar)
 
     this.authService.usuarioLogadoEmitter.subscribe(
-      u =>this.tipoUsuario = u.restricao
+      u =>this.tipoUsuario = u.restricao 
     )  
+
+    this.authService.getPermissaoUsuarioLogado()
   }
 
   logout(){

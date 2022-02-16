@@ -2,3 +2,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+form.ng-submitted.ng-invalid input.ng-invalid{
+    border: 1px solid red;
+  }
+  form.ng-submitted.ng-invalid select.ng-invalid{
+    border: 1px solid red;
+  }
+

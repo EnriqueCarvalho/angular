@@ -5,8 +5,11 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Ambiente } from 'src/app/shared/model/Ambiente';
 import { Quadra } from 'src/app/shared/model/Quadra';
 import { Reservas } from 'src/app/shared/model/Reservas';
+import { TabAuxiliar } from 'src/app/shared/model/TabAuxiliar';
+import { AlertService } from 'src/app/shared/service/alert.service';
 import { QuadrasService } from 'src/app/shared/service/quadras.service';
 import { ReservasService } from 'src/app/shared/service/reservas.service';
+import { TabauxiliarService } from 'src/app/shared/service/tabauxiliar.service';
 
 
 
@@ -22,6 +25,7 @@ export class NovaReservaComponent implements OnInit {
 
    public quadras:Quadra[] =[];
    public ambientes:Ambiente[]=[]
+   public horarios:TabAuxiliar[]=[]
    public quadraSelect: Quadra = new Quadra
    public msg:string = ''
 
@@ -38,7 +42,9 @@ export class NovaReservaComponent implements OnInit {
     private router: Router,
     private modalService: BsModalService,
     private formBuilder: FormBuilder,
-    private quadrasService: QuadrasService
+    private quadrasService: QuadrasService,
+    private alertService: AlertService,
+    private tabAuxiliarService: TabauxiliarService
     ) { 
       this.quadrasService.getQuadras().subscribe(q=>{
         this.quadras=q
@@ -56,27 +62,24 @@ export class NovaReservaComponent implements OnInit {
 
     if(this.formulario.valid){
       let reserva: Reservas = new Reservas();
-      reserva.quadra.idQuadra= this.formulario.get('local')?.value
-      reserva.ambiente.idAmbiente=this.formulario.get('ambiente')?.value
-      reserva.data= this.formulario.get('data')?.value
-      reserva.horario= this.formulario.get('horario')?.value
-
+      reserva = this.montaReserva()
       this.reservasService.novaReserva(reserva).subscribe(m =>{
 
         if(m==="sucess"){
-          this.openModal(this.template)
-          this.home;
+          
+          this.alertService.alertarSucesso()
+          this.ret()
+
         }else{
-          alert("ERRO: "+m)
+          this.alertService.alertarErro()
         }
        
         });
       }
+
+      
     }
 
-    home(){
-      this.router.navigate(['/'])
-    }
 
     onSelect(){
         //console.log(this.formulario.get('local')?.value)
@@ -85,6 +88,22 @@ export class NovaReservaComponent implements OnInit {
         filter((q)=>q.idQuadra == id)[0]
 
         this.ambientes = this.quadraSelect.ambientes        
+    }
+    onSelectData(){
+      let reserva = new Reservas()      
+      reserva = this.montaReserva()
+
+      if(this.reservasService.validarGetHorario(this.formulario)){
+        this.tabAuxiliarService.getHorarios(reserva).subscribe(m =>{
+
+          if(m){
+             this.horarios = m
+          }else{
+             this.alertService.alertarErro()
+          }
+          
+        });           
+      }     
     }
 
    
@@ -95,8 +114,25 @@ export class NovaReservaComponent implements OnInit {
       local: [null, [Validators.required, Validators.maxLength(35)]],
       ambiente: [null, [Validators.required, Validators.maxLength(35)]],
       data: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(35)]],
-      horario: [null, [Validators.required, Validators.minLength(3), Validators.maxLength(35)]],
+      horario: [null, [Validators.required]],
     })
   }
+
+  montaReserva():Reservas{
+    let reserva: Reservas = new Reservas()
+
+    reserva.quadra.idQuadra= this.formulario.get('local')?.value
+    reserva.ambiente.idAmbiente=this.formulario.get('ambiente')?.value
+    reserva.data= this.formulario.get('data')?.value
+    reserva.horario= this.formulario.get('horario')?.value
+    reserva.idReserva= this.formulario.get('idReserva')?.value
+
+    return reserva
+}
+
+ret(){
+  this.router.navigate(["/clientes"])
+}
+
 
 }

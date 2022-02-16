@@ -1,0 +1,15 @@
+
+<alert *ngIf="alertSucesso"  (onClosed)="alertSucesso = false" type="success" [dismissOnTimeout]="3000">
+    <p><strong>Sucesso</strong></p> Operação realizada com sucesso.
+  </alert>
+
+  <alert *ngIf="alertErro" (onClosed)="alertErro" type="danger" [dismissOnTimeout]="3000">
+    <p><strong>Erro</strong></p> Houve um erro na operação.
+  </alert>
+  <!-- <alert   type="success">
+    <p><strong>Sucesso</strong></p> Operação realizada com sucesso.
+  </alert>
+
+  <alert  type="danger" >
+    <p><strong>Erro</strong></p> Houve um erro na operação.
+  </alert> -->
