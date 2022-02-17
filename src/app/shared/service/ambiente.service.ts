@@ -31,7 +31,7 @@ export class AmbienteService {
   } 
   
   
-  getAmbiente(idQuadra: any){
+  getAmbiente(idQuadra: any):Ambiente[]{
     let ambiente: Ambiente[] = []
     ambiente = [{
       idAmbiente:   '1',

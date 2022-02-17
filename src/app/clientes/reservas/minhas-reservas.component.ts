@@ -10,6 +10,7 @@ import { QuadrasService } from 'src/app/shared/service/quadras.service';
 import { ReservasService } from 'src/app/shared/service/reservas.service';
 import { TabAuxiliar } from 'src/app/shared/model/TabAuxiliar';
 import { TabauxiliarService } from 'src/app/shared/service/tabauxiliar.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -33,6 +34,8 @@ export class MinhasReservasComponent implements OnInit {
   public quadraSelect: Quadra = new Quadra
   public msg:string = ''
   public dataAtual = new Date();
+
+  
   
   constructor( 
     private reservasService: ReservasService,   
@@ -41,10 +44,12 @@ export class MinhasReservasComponent implements OnInit {
     private quadrasService: QuadrasService,
     private router: Router,
     private alertService: AlertService,
-    private tabAuxiliarService: TabauxiliarService){ 
+    private tabAuxiliarService: TabauxiliarService
+   ){ 
       this.quadrasService.getQuadras().subscribe(q=>{
         this.quadras=q
       })
+      
     }
 
   ngOnInit(): void {  
@@ -69,6 +74,7 @@ export class MinhasReservasComponent implements OnInit {
       ariaDescribedby: 'my-modal-description',
       ariaLabelledBy: 'my-modal-title'
     });  
+    
 
  
   }
@@ -84,13 +90,19 @@ export class MinhasReservasComponent implements OnInit {
       reserva = this.montaReserva()     
 
       this.reservasService.novaReserva(reserva).subscribe(m =>{
-
+        console.log(m)
         if(m==="sucess"){
           this.alertService.alertarSucesso()
           this.router.navigate(["/"])
           
         }else{
-          this.alertService.alertarErro()
+          if(m==="data"){
+            this.alertService.alertarDataMenor()
+            console.log(m)
+          }else{
+            this.alertService.alertarErro()
+            console.log(m)
+          } 
         }
        
         });
@@ -98,6 +110,8 @@ export class MinhasReservasComponent implements OnInit {
       }
     }
     onSelect(){
+      console.log("DATA ATUAL")
+ 
       
       let id = this.formularioModal.get('local')?.value
       this.quadraSelect = this.quadras.

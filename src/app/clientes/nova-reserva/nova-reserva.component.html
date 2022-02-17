@@ -1,6 +1,7 @@
+<h1 class="mb-5">Nova reserva</h1>
 <form [formGroup]="formulario" (ngSubmit)="submit()">
 
-  <div class="form-row">
+  <div class="form-row" >
     <div class="col">
       <label for="exampleFormControlSelect1">Local</label>
       <select class="form-control" id="exampleFormControlSelect1"  formControlName="local" (change)="onSelect();onSelectData()">

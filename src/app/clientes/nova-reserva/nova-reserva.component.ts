@@ -64,14 +64,18 @@ export class NovaReservaComponent implements OnInit {
       let reserva: Reservas = new Reservas();
       reserva = this.montaReserva()
       this.reservasService.novaReserva(reserva).subscribe(m =>{
-
         if(m==="sucess"){
-          
           this.alertService.alertarSucesso()
-          this.ret()
-
+          this.router.navigate(["/"])
+          
         }else{
-          this.alertService.alertarErro()
+          if(m==="data"){
+            this.alertService.alertarDataMenor()
+            console.log(m)
+          }else{
+            this.alertService.alertarErro()
+            console.log(m)
+          } 
         }
        
         });

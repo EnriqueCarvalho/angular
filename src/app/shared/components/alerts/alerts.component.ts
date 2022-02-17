@@ -12,6 +12,7 @@ export class AlertsComponent implements OnInit {
 
   alertErro: boolean = false
   alertSucesso: boolean = false
+  alertDataMenor:boolean = false
 
   ngOnInit(): void {
     this.alertService.alertErro.subscribe(
@@ -20,6 +21,9 @@ export class AlertsComponent implements OnInit {
 
     this.alertService.alertSucesso.subscribe(
       alert => this.alertSucesso = alert
+    )
+    this.alertService.alertDataMenor.subscribe(
+      alert => this.alertDataMenor = alert
     )
   }
 
